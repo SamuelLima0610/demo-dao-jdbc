@@ -20,6 +20,11 @@ public class Program {
 		for(Seller sel: sellers) {
 			System.out.println(sel);
 		}
+		sellers = daoSeller.findAll();
+		System.out.println("\n-------------- Test findAll--------------");
+		for(Seller sel: sellers) {
+			System.out.println(sel);
+		}
 	}
 
 }
