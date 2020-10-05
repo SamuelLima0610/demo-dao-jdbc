@@ -11,7 +11,7 @@ import model.entities.Department;
 public class Program {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// Seller
 		SellerDao daoSeller = DaoFactory.createSellerDao();
 		Seller seller = daoSeller.findById(3);
 		System.out.println("-------------- Test Seller: findById--------------");
@@ -37,7 +37,7 @@ public class Program {
 		daoSeller.update(seller);
 		System.out.println("Update complete");
 		System.out.println("\n-------------- Teste Seller: Delete --------------");
-		daoSeller.deleteById(1);
+		daoSeller.deleteById(12);
 		System.out.println("Delete complete");
 	}
 
