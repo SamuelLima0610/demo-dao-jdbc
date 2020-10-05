@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import model.dao.DaoFactory;
@@ -13,18 +14,23 @@ public class Program {
 		// TODO Auto-generated method stub
 		SellerDao daoSeller = DaoFactory.createSellerDao();
 		Seller seller = daoSeller.findById(3);
-		System.out.println("-------------- Test findById--------------");
+		System.out.println("-------------- Test Seller: findById--------------");
 		System.out.println(seller);
-		List<Seller> sellers = daoSeller.findByDepartment(new Department(2,null));
-		System.out.println("\n-------------- Test findByDepartment--------------");
+		Department department = new Department(2,null);
+		List<Seller> sellers = daoSeller.findByDepartment(department);
+		System.out.println("\n-------------- Test Seller: findByDepartment--------------");
 		for(Seller sel: sellers) {
 			System.out.println(sel);
 		}
 		sellers = daoSeller.findAll();
-		System.out.println("\n-------------- Test findAll--------------");
+		System.out.println("\n-------------- Test Seller: findAll--------------");
 		for(Seller sel: sellers) {
 			System.out.println(sel);
 		}
+		System.out.println("\n-------------- Teste Seller: Insert --------------");
+		Seller newSeller = new Seller(null,"Cris","cris@mail.com",new Date(), 4000.0,department);
+		daoSeller.insert(newSeller);
+		System.out.println("Inserted new id = " + newSeller.getId());
 	}
 
 }
