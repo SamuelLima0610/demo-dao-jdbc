@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,8 +82,18 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-		
+		PreparedStatement pst = null;
+		try {
+			pst = conn.prepareStatement(
+					"DELETE FROM seller\r\n" + 
+					"WHERE Id = ?;");
+			pst.setInt(1, id);
+			pst.executeUpdate();
+		}catch(SQLException e) {
+			throw new DbException(e.getMessage());
+		}finally {
+			DB.closeStatment(pst);
+		}
 	}
 
 	@Override
